@@ -1,0 +1,4 @@
+-r requirements.txt
+# for scripts/fetch_jikan.py and the tests
+requests>=2.31
+pytest>=7.4

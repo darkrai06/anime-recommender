@@ -22,7 +22,7 @@ everything else by **cosine similarity** between feature vectors.
 
 ```bash
 python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
+pip install -r requirements-dev.txt
 streamlit run app.py
 ```
 
@@ -66,3 +66,17 @@ python -m pytest
 - Hybrid model: blend with collaborative filtering on user ratings (`implicit` / `surprise`).
 - Offline evaluation (precision@K) once you have user rating data.
 - Deploy on Streamlit Community Cloud or Hugging Face Spaces.
+
+## Deploy (Streamlit Community Cloud)
+
+1. Fetch the full dataset locally and commit it (about 1,000 titles is only a few MB):
+   ```bash
+   python scripts/fetch_jikan.py --pages 40 --out data/anime.csv
+   git add data/anime.csv && git commit -m "Add full dataset" && git push
+   ```
+   Without it, the deployed app falls back to the 60-title sample.
+2. Go to https://share.streamlit.io, sign in with GitHub, click **Create app**.
+3. Pick repo `darkrai06/anime-recommender`, branch `main`, main file `app.py`.
+4. Under **Advanced settings** choose Python 3.12 or 3.13, then **Deploy**.
+
+Dependencies come from `requirements.txt` (runtime only; dev tools are in `requirements-dev.txt`).

@@ -4,7 +4,5 @@ __pycache__/
 venv/
 .pytest_cache/
 .streamlit/secrets.toml
-# full dataset is large and re-creatable with scripts/fetch_jikan.py
-data/anime.csv
 *.npz
 *.pkl
